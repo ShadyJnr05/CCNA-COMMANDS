@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>CCNA Packet Tracer Trainer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<style>
+:root{--bg:#f2f5f9;--pn:#fff;--tx:#14202f;--mu:#566880;--ac:#0b6fa8;--ok:#16794a;--bad:#b3261e;--bd:#d4dce6;--tm:#0b1624;--tt:#d8e6f2;--pr:#f2b134;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1726;--pn:#16233a;--tx:#e4ecf5;--mu:#93a6bc;--ac:#4fb3e8;--ok:#4cc38a;--bad:#ff7b72;--bd:#25364f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1726;--pn:#16233a;--tx:#e4ecf5;--mu:#93a6bc;--ac:#4fb3e8;--ok:#4cc38a;--bad:#ff7b72;--bd:#25364f;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;max-width:1040px;margin:auto;padding:16px 16px 0}
+h1{font-size:1.25rem;margin:0}h2{margin:0 0 12px;font-size:1.5rem}h3{margin:0 0 8px;font-size:1.05rem}
+button{font:inherit;cursor:pointer}
+.btn,#tg{background:var(--pn);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:6px 12px}
+.btn.p{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;max-width:1040px;margin:auto;padding:16px}
+nav{display:flex;flex-direction:column;gap:6px;align-self:start}
+nav button{text-align:left;background:none;border:1px solid transparent;border-radius:6px;padding:8px 10px;color:var(--tx);display:flex;justify-content:space-between;gap:8px}
+nav button.on{background:var(--pn);border-color:var(--ac)}nav small,.mu{color:var(--mu)}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:10px;padding:16px;margin:0 0 16px}
+.r{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:6px 14px;padding:8px 0;border-top:1px solid var(--bd);align-items:start}
+code,.term{font-family:"IBM Plex Mono",ui-monospace,monospace}
+code{background:var(--tm);color:var(--tt);padding:3px 8px;border-radius:4px;font-size:.88rem;overflow-wrap:anywhere}
+.term{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--tm);color:var(--tt);border-radius:8px;padding:10px 12px;font-size:.9rem;margin:8px 0}
+.term span{color:var(--pr)}.term:focus-within{outline:2px solid var(--ac)}
+.term input{flex:1;min-width:140px;background:none;border:0;color:inherit;font:inherit;outline:0}
+.dr,.qz{padding:12px 0;border-top:1px solid var(--bd)}
+.op{display:block;width:100%;text-align:left;margin:6px 0;background:var(--pn);color:var(--tx);border:1px solid var(--bd);border-radius:6px;padding:8px 12px}
+.op:disabled{color:var(--tx);opacity:1;cursor:default}
+.op.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--pn))}
+.op.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--pn))}
+.fb{margin:8px 0 0;min-height:1.2em}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.nx{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
+footer{text-align:center;color:var(--mu);padding:20px 16px 28px;font-size:.9rem}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media(max-width:720px){.wrap{grid-template-columns:minmax(0,1fr)}nav{flex-direction:row;overflow-x:auto}nav button{white-space:nowrap}.r{grid-template-columns:minmax(0,1fr)}}
+</style></head><body>
+<header><h1>CCNA Packet Tracer trainer</h1><div><span id="pg" class="mu"></span> <button id="tg">Light / dark</button></div></header>
+<div class="wrap"><nav id="nav" aria-label="Lessons"></nav><main id="main"></main></div>
+<footer>Modau.M IT</footer>
+<script>
+const L=[
+{n:"CLI modes and basic setup",i:"The CLI works in modes, and the prompt tells you which one you’re in. You start in User EXEC (Router&gt;), type enable to reach Privileged EXEC (Router#), then configure terminal for Global Config (Router(config)#). Press ? to see what’s allowed and Tab to finish a word.",
+c:[["enable","User EXEC to Privileged EXEC"],["configure terminal","Enter Global Config (short: conf t)"],["hostname R1","Name the device; the prompt changes"],["enable secret cisco123","Encrypted password for Privileged EXEC"],["end","Straight back to # (Ctrl+Z does the same)"],["copy running-config startup-config","Save to NVRAM (short: copy run start)"]],
+q:[{q:"Which prompt shows Privileged EXEC mode?",o:["Router>","Router#","Router(config)#","Router(config-if)#"],a:1,e:"# means Privileged EXEC. > is User EXEC; (config) means a configuration mode."},
+{q:"You configured a router but never saved. What happens after a reload?",o:["Everything stays","The changes are lost","It saves on shutdown","It asks you to retype them"],a:1,e:"Changes live in running-config (RAM). Only copy run start writes them to startup-config."},
+{q:"What does end do in config mode?",o:["Goes up one level","Returns straight to Privileged EXEC","Reloads the device","Saves the config"],a:1,e:"exit goes up one level; end (or Ctrl+Z) jumps to #."}],
+d:[{p:"Router>",t:"Move into Privileged EXEC mode.",a:["enable"],h:"One word."},{p:"Router#",t:"Enter Global Configuration mode.",a:["configure terminal"],h:"Short form: conf t"},{p:"Router(config)#",t:"Name this device HQ1.",a:["hostname HQ1"],h:"hostname, then the name."}]},
+{n:"Interfaces and IP addressing",i:"Router interfaces start shut down with no IP. Giving an address isn’t enough: you also need no shutdown. Finish with show ip interface brief and check that Status and Protocol both say up.",
+c:[["interface g0/0","Enter interface mode (full: gigabitEthernet 0/0)"],["ip address 192.168.1.1 255.255.255.0","Set IP and subnet mask"],["no shutdown","Turn the interface on (short: no shut)"],["description LAN to switch","Label the port"],["ip default-gateway 192.168.1.1","On a switch: where off-subnet traffic goes"],["show ip interface brief","One-line summary of every interface"]],
+q:[{q:"You set an IP but the interface is administratively down. What’s missing?",o:["no shutdown","ip routing","enable secret","copy run start"],a:0,e:"Router interfaces are off by default."},
+{q:"Which command summarises all interfaces in one line each?",o:["show running-config","show ip interface brief","show interfaces trunk","show ip route"],a:1,e:"It lists IP, Status and Protocol per interface."},
+{q:"A Layer 2 switch must reach another network. What do you set?",o:["ip default-gateway","ip nat inside","switchport mode trunk","banner motd"],a:0,e:"The switch uses a default gateway for its own management traffic."}],
+d:[{p:"Router(config)#",t:"Enter interface mode for GigabitEthernet 0/0.",a:["interface g0/0","interface gigabitethernet 0/0"],h:"interface, then the name."},{p:"Router(config-if)#",t:"Give it 10.0.0.1 with mask 255.255.255.0.",a:["ip address 10.0.0.1 255.255.255.0"],h:"ip address IP MASK"},{p:"Router(config-if)#",t:"Turn the interface on.",a:["no shutdown"],h:"The opposite of shutdown."}]},
+{n:"VLANs and trunks",i:"VLANs split one switch into separate broadcast domains. Create the VLAN, then assign access ports to it. Links between switches (and to a router doing inter-VLAN routing) carry several VLANs, so they’re trunks.",
+c:[["vlan 10","Create VLAN 10"],["name Sales","Name the VLAN"],["switchport mode access","Port belongs to one VLAN"],["switchport access vlan 10","Put the port in VLAN 10"],["switchport mode trunk","Port carries many VLANs"],["encapsulation dot1q 10","On subinterface g0/0.10: tag it VLAN 10, then set its IP"],["show vlan brief","VLANs and their ports"]],
+q:[{q:"Which command puts a port into VLAN 20?",o:["switchport access vlan 20","switchport trunk vlan 20","vlan 20 access","encapsulation dot1q 20"],a:0,e:"Set access mode, then access vlan."},
+{q:"Which link should be a trunk?",o:["Switch to PC","Switch to switch","Switch to printer","Unused port"],a:1,e:"Trunks carry several VLANs; end devices use access ports."},
+{q:"What does encapsulation dot1q 30 do?",o:["Creates VLAN 30","Handles 802.1Q frames tagged VLAN 30","Sets the native VLAN","Disables VLAN 30"],a:1,e:"It binds the router subinterface to VLAN 30 traffic."}],
+d:[{p:"Switch(config)#",t:"Create VLAN 10.",a:["vlan 10"],h:"vlan, then the ID."},{p:"Switch(config-if)#",t:"Make this port an access port.",a:["switchport mode access"],h:"switchport mode ..."},{p:"Switch(config-if)#",t:"Put this port in VLAN 10.",a:["switchport access vlan 10"],h:"switchport access vlan ID"}]},
+{n:"Routing: static and OSPF",i:"A router only knows its directly connected networks. Static routes add others by hand; OSPF learns them from neighbours. In OSPF you advertise networks with a wildcard mask, the inverse of the subnet mask (255.255.255.0 becomes 0.0.0.255).",
+c:[["ip route 192.168.2.0 255.255.255.0 10.0.0.2","Static: network, mask, next hop"],["ip route 0.0.0.0 0.0.0.0 10.0.0.2","Default route"],["router ospf 1","Start OSPF process 1"],["network 192.168.1.0 0.0.0.255 area 0","Advertise a network in area 0"],["show ip route","C connected, S static, O OSPF"],["show ip ospf neighbor","Look for state FULL"]],
+q:[{q:"What is the wildcard mask for 255.255.255.0?",o:["0.0.0.255","0.0.255.255","255.0.0.0","0.0.0.0"],a:0,e:"Subtract each octet from 255."},
+{q:"Which letter in show ip route marks a static route?",o:["C","S","O","L"],a:1,e:"S = static, C = connected, O = OSPF."},
+{q:"What is ip route 0.0.0.0 0.0.0.0 10.0.0.2?",o:["A default route","An OSPF route","A connected route","A trunk"],a:0,e:"It matches every destination not in the table."}],
+d:[{p:"Router(config)#",t:"Static route to 192.168.2.0/24 via next hop 10.0.0.2.",a:["ip route 192.168.2.0 255.255.255.0 10.0.0.2"],h:"ip route NETWORK MASK NEXT-HOP"},{p:"Router(config)#",t:"Start OSPF process 1.",a:["router ospf 1"],h:"router ospf ID"},{p:"Router(config-router)#",t:"Advertise 192.168.1.0/24 in area 0.",a:["network 192.168.1.0 0.0.0.255 area 0"],h:"Use the wildcard mask."}]},
+{n:"DHCP, ACLs and NAT",i:"DHCP hands out addresses, so exclude the ones that must stay static (like the gateway) first. An ACL is read top to bottom, the first match wins, and an invisible deny any sits at the end. NAT overload lets many private hosts share one public address.",
+c:[["ip dhcp excluded-address 192.168.1.1 192.168.1.10","Reserve a range"],["ip dhcp pool LAN1","Create a pool"],["default-router 192.168.1.1","Gateway for clients (inside the pool)"],["ip helper-address 10.0.0.5","Forward DHCP to a server on another network"],["access-list 10 permit 192.168.1.0 0.0.0.255","Standard ACL: match by source"],["ip access-group 10 in","Apply the ACL to an interface"],["ip nat inside source list 10 interface g0/1 overload","PAT through the g0/1 address"]],
+q:[{q:"Why exclude addresses before building a DHCP pool?",o:["So gateways and servers keep static IPs","To speed up DHCP","To give clients DNS","They become VLANs"],a:0,e:"Otherwise DHCP could hand out an address you already assigned."},
+{q:"What happens to traffic that matches no ACL line?",o:["Permitted","Denied by the implicit deny any","Logged only","Passed to the next ACL"],a:1,e:"Every ACL ends with an invisible deny any."},
+{q:"Where does ip helper-address go?",o:["Client-facing interface","The DHCP server","The ISP link","line vty 0 4"],a:0,e:"It turns client broadcasts into unicast to the DHCP server."}],
+d:[{p:"Router(config)#",t:"Exclude 192.168.1.1 to 192.168.1.10 from DHCP.",a:["ip dhcp excluded-address 192.168.1.1 192.168.1.10"],h:"ip dhcp excluded-address START END"},{p:"Router(config)#",t:"Create a DHCP pool called LAN1.",a:["ip dhcp pool LAN1"],h:"ip dhcp pool NAME"},{p:"Router(dhcp-config)#",t:"Set the default gateway to 192.168.1.1.",a:["default-router 192.168.1.1"],h:"default-router IP"}]},
+{n:"Security and verification",i:"Secure first, then verify. Encrypt passwords, replace Telnet with SSH, and limit what switch ports accept. After every change run a show command and a ping so you see it working. If a ping fails, start at the bottom: interfaces, then addressing, then routes.",
+c:[["service password-encryption","Scramble plain-text passwords"],["ip domain-name lab.local","Needed before generating SSH keys"],["crypto key generate rsa","Create SSH keys (use 1024 bits or more)"],["username admin secret cisco123","Local login account"],["line vty 0 4","Then: login local and transport input ssh"],["switchport port-security","Limit which devices a port accepts"],["traceroute 192.168.2.1","Shows each hop to find where it breaks"]],
+q:[{q:"What must be set before crypto key generate rsa?",o:["ip domain-name","ip route","vlan 10","no shutdown"],a:0,e:"RSA keys need a hostname and a domain name."},
+{q:"What does transport input ssh do on the VTY lines?",o:["Allows only SSH, blocking Telnet","Enables Telnet","Encrypts the console","Creates a VLAN"],a:0,e:"Only SSH sessions are accepted for remote login."},
+{q:"A ping fails. What’s the best first check?",o:["show ip interface brief","Reload the router","Erase startup-config","Change the hostname"],a:0,e:"Confirm the interfaces are up/up before looking higher."}],
+d:[{p:"Router(config)#",t:"Set the domain name to lab.local.",a:["ip domain-name lab.local"],h:"ip domain-name NAME"},{p:"Router(config)#",t:"Generate the RSA keys.",a:["crypto key generate rsa"],h:"crypto key generate ..."},{p:"Router(config)#",t:"Encrypt all plain-text passwords.",a:["service password-encryption"],h:"service ..."}]}
+];
+let S={},cur=0;const K="ccna-trainer",R=document.documentElement;
+try{S=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){}
+try{R.dataset.theme=localStorage.getItem(K+"-t")||"dark"}catch(e){R.dataset.theme="dark"}
+const sv=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const tot=l=>l.q.length+l.d.length,dn=i=>Object.keys(S).filter(k=>k.startsWith(i+":")&&S[k]).length;
+function match(t,a){t=t.trim().toLowerCase().split(/\s+/);return a.some(x=>{x=x.toLowerCase().split(" ");return x.length==t.length&&x.every((e,i)=>/[^a-z]/.test(e)?e==t[i]:e.startsWith(t[i]))})}
+function nav(){$("#nav").innerHTML=L.map((l,i)=>`<button data-i="${i}" class="${i==cur?"on":""}">${l.n}<small>${dn(i)}/${tot(l)}</small></button>`).join("");
+$("#pg").textContent=L.reduce((s,l,i)=>s+dn(i),0)+" of "+L.reduce((s,l)=>s+tot(l),0)+" done"}
+function show(){const l=L[cur];
+$("#main").innerHTML=`<h2>${l.n}</h2><section class="card"><h3>Learn</h3><p>${l.i}</p>${l.c.map(c=>`<div class="r"><code>${esc(c[0])}</code><span>${c[1]}</span></div>`).join("")}</section>
+<section class="card"><h3>Type it</h3><p class="mu">Abbreviations work, like on a real device. Press Enter to check.</p>${l.d.map((d,j)=>`<div class="dr" data-j="${j}"><div>${d.t}</div><div class="term"><span>${d.p}</span><input aria-label="Type the command" spellcheck="false" autocapitalize="off" autocomplete="off"></div><button class="btn p ck">Check</button> <button class="btn sh">Show answer</button><p class="fb"></p></div>`).join("")}</section>
+<section class="card"><h3>Quiz</h3>${l.q.map((q,j)=>`<div class="qz" data-j="${j}"><b>${q.q}</b>${q.o.map((o,k)=>`<button class="op" data-k="${k}">${o}</button>`).join("")}<p class="fb"></p></div>`).join("")}</section>
+<div class="nx"><button class="btn" data-go="-1" ${cur?"":"disabled"}>Previous</button><button class="btn" id="rs">Reset lesson</button><button class="btn p" data-go="1" ${cur<L.length-1?"":"disabled"}>Next lesson</button></div>`;
+l.d.forEach((D,j)=>{if(S[cur+":d"+j]){const d=$(`.dr[data-j="${j}"]`),f=d.querySelector(".fb");d.querySelector("input").value=D.a[0];f.className="fb ok";f.textContent="Correct: "+D.a[0]}});
+l.q.forEach((Q,j)=>{if(S[cur+":q"+j]){const q=$(`.qz[data-j="${j}"]`),f=q.querySelector(".fb");q.querySelectorAll(".op").forEach(o=>{o.disabled=true;if(+o.dataset.k==Q.a)o.classList.add("ok")});f.className="fb ok";f.textContent="Correct. "+Q.e}});nav()}
+function chk(d){const j=+d.dataset.j,D=L[cur].d[j],f=d.querySelector(".fb");
+if(match(d.querySelector("input").value,D.a)){S[cur+":d"+j]=1;sv();f.className="fb ok";f.textContent="Correct: "+D.a[0];nav()}else{f.className="fb bad";f.textContent="Not yet. Hint: "+D.h}}
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.matches(".term input"))chk(e.target.closest(".dr"))});
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+if(b.id=="tg"){const t=R.dataset.theme=="dark"?"light":"dark";R.dataset.theme=t;try{localStorage.setItem(K+"-t",t)}catch(x){}}
+else if(b.dataset.i){cur=+b.dataset.i;show();scrollTo(0,0)}
+else if(b.dataset.go){cur+=+b.dataset.go;show();scrollTo(0,0)}
+else if(b.id=="rs"){Object.keys(S).forEach(k=>{if(k.startsWith(cur+":"))delete S[k]});sv();show()}
+else if(b.classList.contains("ck"))chk(b.closest(".dr"));
+else if(b.classList.contains("sh")){const d=b.closest(".dr"),f=d.querySelector(".fb");f.className="fb mu";f.textContent="Answer: "+L[cur].d[+d.dataset.j].a[0]}
+else if(b.classList.contains("op")){const q=b.closest(".qz"),j=+q.dataset.j,Q=L[cur].q[j],f=q.querySelector(".fb");
+if(+b.dataset.k==Q.a){b.classList.add("ok");q.querySelectorAll(".op").forEach(o=>o.disabled=true);S[cur+":q"+j]=1;sv();f.className="fb ok";f.textContent="Correct. "+Q.e;nav()}
+else{b.classList.add("bad");b.disabled=true;f.className="fb bad";f.textContent="Not quite, try another."}}});
+show();
+</script></body></html>
